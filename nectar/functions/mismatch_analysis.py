@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 from nectar.config import (
     STATION_DIR,
@@ -82,7 +83,16 @@ def run_mismatch_analysis(fw_df=None, save=True):
         .sort_values("date")
     )
 
+    daily = daily.sort_values("date").copy()
+
     daily["year"] = daily["date"].dt.year
+    daily["gdd"] = (daily["tmean"] - BASE_TEMP_F).clip(lower=0)
+    daily["gdd_cumul"] = daily.groupby("year")["gdd"].cumsum()
+
+# save aggregated dataset
+    if save:
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        daily.to_csv(OUTPUT_DIR / "all_gdd.csv", index=False)
 
     flowering = {
         yr: compute_flowering_doy(group)
