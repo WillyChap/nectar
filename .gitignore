@@ -6,22 +6,9 @@ __pycache__/
 *.pyo
 
 # =========================
-# Jupyter / environment noise (if used later)
+# Jupyter
 # =========================
 .ipynb_checkpoints/
-
-# =========================
-# Data files (DO NOT UPLOAD RAW DATA)
-# =========================
-data/
-*.csv
-
-# =========================
-# Generated outputs (plots, results)
-# =========================
-outputs/
-*.png
-*.pdf
 
 # =========================
 # OS files
@@ -30,7 +17,27 @@ outputs/
 Thumbs.db
 
 # =========================
-# Optional environment files
+# Environment
 # =========================
 .env
 .venv/
+
+# =========================
+# RAW DATA (DO NOT TRACK)
+# =========================
+data/raw/
+nectar/data/feederwatch_2021-2024_raw.csv
+
+# =========================
+# STATION DATA (TRACKED)
+# =========================
+# (intentionally included in repo)
+# data/stations/*.csv will be tracked
+
+# =========================
+# OUTPUTS (TRACKED)
+# =========================
+# outputs/ is intentionally tracked for results
+
+# optional temp outputs only
+outputs/tmp/
