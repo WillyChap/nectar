@@ -4,6 +4,28 @@ from nectar.functions.plotting import run_plots
 
 
 def main():
+
+    """
+    Runs full nectar workflow
+
+    1. Cleans raw FeederWatch hummingbird observation data
+    2. Computes phenological mismatch between:
+        - hummingbird arrival timing
+        - flowering timing (using growing degree days)
+    3. Generates output plots:
+        - phenology timing over time
+        - mismatch trends over time
+
+    Workflow outputs are saved automatically to the configured OUTPUT_DIR.
+
+    Returns
+    -------
+    pd.DataFrame
+        Final mismatch results containing:
+        - arrival_doy
+        - flowering_doy
+        - mismatch_days
+    """
     print("\n===================================")
     print(f"HUMMINGBIRD ARRIVAL VS. FLOWER BLOOM")
     print("===================================\n")
