@@ -10,10 +10,31 @@ from nectar.config import OUTPUT_DIR, PLOT_TIMING, PLOT_MISMATCH
 # ............................................
 def run_plots(results_df=None):
     """
-    If results_df is None:
-        loads mismatch_results.csv from OUTPUT_DIR
-    Otherwise:
-        uses passed-in dataframe (pipeline mode)
+    Generate phenology and mismatch plots from analysis results.
+
+    This function creates two figures:
+    1. Flowering vs hummingbird arrival timing over time
+    2. Temporal mismatch (arrival - flowering) with trend line
+
+    If no dataframe is provided, results are loaded from:
+    OUTPUT_DIR/mismatch_results.csv
+
+    Parameters
+    ----------
+    results_df : pd.DataFrame, optional
+        Precomputed mismatch results. If None, the function loads
+        saved results from folder
+
+    Returns
+    -------
+    pd.DataFrame
+        Cleaned mismatch dataset used for plotting, with NaN rows removed.
+
+    Outputs
+    -------
+    Saves two figures:
+    - PLOT_TIMING: flowering and arrival timing comparison
+    - PLOT_MISMATCH: temporal mismatch over time
     """
 
     # ----------------------------------------
