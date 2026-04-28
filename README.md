@@ -18,7 +18,19 @@ Scientists are already witnessing the impacts of global temperature increase on 
 
 # Usage
 
-Nectar is intended to be used for scientists and wildlife officials to determine temporal mismatch between hummingbird arrivalals and flowering bloom time. This package outputs dataframes with the sume of gorwing degree days over all years (1988-2024), average estimated hummingbird arrival day of year (DOY), an estimated flowering DOY for all of the existing data years provided, the number of days of temporal mismatch, and the mean temporal mismatch over all of the years analyzed. Additionally, the plotting functionality provides a graph plotting esimated hummingbird arrival over time, estimated flowering day over time, and the overall temporal mismatch (in days) over time. 
+Nectar is intended to be used for scientists and wildlife officials to determine temporal mismatch between hummingbird arrivalals and flowering bloom time. 
+
+This package outputs:
+- Daily and cumulative growing degree days (GDD) from 1988-2024
+- Estimated flowering DOY of each year
+- Estimated hummingbird arrival DOY from year
+- Annual mismatch (in days)
+- Mean mismatch across all years
+
+Plotting outputs:
+- Flowering timing
+- Hummingbird arrival timing
+- Temporal mismatch over time
 
 ## Installation
 
@@ -29,7 +41,7 @@ pip install -e .
 Or from source:
 
 ```bash
-git clone [(https://github.com/chandnir2/atoc4815_nectar.git)]
+git clone [(https://github.com/chandnir2/nectar.git)]
 cd nectar
 pip install -e .
 ```
@@ -40,12 +52,12 @@ pip install -e .
 run-nectar    # generates outputs/flowering_vs_arrival.png and data/mismatch.png & csv files
 ```
 
-## Files inside nectar main project root folder
+## Package files
 - `__init__.py` - init file
 - `config.py` - configuration script to ensure no hardcoded filepaths
 - `run.py` - driver script; runs all functions
 
-## Files inside functions folder
+## Function files
 
 - `cleaning.py` — read and clean raw Feederwatch data 
 - `mismatch_analysis.py` — main functions
