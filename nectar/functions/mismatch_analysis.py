@@ -17,6 +17,26 @@ from nectar.functions.cleaning import clean_feederwatch
 # ..................................................
 def load_station_data(filepath):
 
+    """
+    Load and clean daily weather station data.
+
+    This function reads raw station data files from the Colorado Climate Center,
+    extracts the station name, and computes mean daily temperature when given minimum and maximum daily temps.
+
+    Parameters
+    ----------
+    filepath : Path or str
+        Path to a raw weather station CSV file. The first row contains station name
+
+    Returns
+    -------
+    pd.DataFrame
+        Cleaned dataframe containing:
+        - date : datetime of observation
+        - tmean : mean daily temperature
+        - station : station name
+    """
+
     with open(filepath) as f:
         station_name = f.readline().strip().split(",")[0]
 
@@ -46,6 +66,26 @@ def load_station_data(filepath):
 # ..................................................
 def compute_flowering_doy(df_year):
 
+    """
+    Estimate flowering day of year (DOY) using growing degree days (GDD).
+
+    Flowering is assumed to occur once cumulative heat units exceed a
+    species-specific threshold.
+
+    Parameters
+    ----------
+    df_year : pd.DataFrame
+        Yearly temperature dataset containing:
+        - date
+        - tmean
+
+    Returns
+    -------
+    int or None
+        Day of year when flowering threshold is reached.
+        Returns None if threshold is not reached within the year.
+    """
+
     df_year = df_year.sort_values("date").copy()
 
     df_year["gdd"] = (df_year["tmean"] - BASE_TEMP_F).clip(lower=0) # can not be negative value
@@ -63,6 +103,38 @@ def compute_flowering_doy(df_year):
 # CALCULATE TEMPORAL MISMATCH BETWEEN FLOWERING AND HUMMINGBIRD ARRIVAL
 # .....................................................................
 def run_mismatch_analysis(fw_df=None, save=True):
+
+    """
+    Compute temporal mismatch between hummingbird arrival and flowering time.
+
+    This function:
+    - Loads and aggregates station temperature data
+    - Computes growing degree days (GDD) per year
+    - Estimates flowering day of year (DOY)
+    - Computes hummingbird arrival DOY from FeederWatch data
+    - Calculates annual mismatch between arrival and flowering timing
+    - Saves outputs to folder
+
+    Parameters
+    ----------
+    fw_df : pd.DataFrame, optional
+        Pre-cleaned FeederWatch dataset. If None, data is loaded using
+        clean_feederwatch().
+
+    save : bool, default=True
+        If True, saves:
+        - aggregated GDD dataset
+        - flowering DOY time series
+        - mismatch results
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame containing:
+        - arrival_doy : estimated hummingbird arrival timing
+        - flowering_doy : estimated flowering timing
+        - mismatch_days : difference (arrival - flowering)
+    """
 
     if fw_df is None:
         fw_df = clean_feederwatch()
