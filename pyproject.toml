@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nectar-chra6227"
-version = "0.1.0"
+version = "0.1.1"
 description = "Analysis of hummingbird phenology and relationship to flowering timing"
 readme = "README.md"
 license = {text = "MIT"}
