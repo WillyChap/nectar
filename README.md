@@ -67,6 +67,7 @@ Or from source:
 ```bash
 git clone [(https://github.com/chandnir2/nectar.git)]
 python -m pip install -e .
+cd nectar
 ```
 
 ## Command Line - this does not work yet
