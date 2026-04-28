@@ -6,6 +6,39 @@ from pathlib import Path
 
 def clean_feederwatch(input_csv=None, output_csv=None):
 
+    """
+    Clean and filter Project FeederWatch hummingbird observation data.
+
+    This function:
+    - Loads raw FeederWatch CSV data
+    - Filters for selected hummingbird species, U.S. mountain states,
+      and spring months (Feb–Apr)
+    - Creates a datetime column and day-of-year (DOY)
+    - Saves cleaned dataset to folder within project
+
+    Parameters
+    ----------
+    input_csv : str or Path, optional
+        Path to raw FeederWatch dataset. If None, uses FEEDERWATCH_RAW
+        from config.
+
+    output_csv : str or Path, optional
+        Path to save cleaned dataset. If None, defaults to
+        OUTPUT_DIR/clean_feederwatch.csv
+
+    Returns
+    -------
+    pd.DataFrame
+        Cleaned FeederWatch dataset containing:
+        - LATITUDE
+        - LONGITUDE
+        - SUBNATIONAL1_CODE
+        - Month, Day, Year
+        - SPECIES_CODE
+        - DATE
+        - DOY
+    """
+
     # -------------------------
     # DEFAULT PATHS FROM CONFIG
     # -------------------------
