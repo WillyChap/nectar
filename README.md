@@ -4,8 +4,9 @@ A lightweight python package that analyzes weather station temperature data from
 
 # DATA
 The raw FeederWatch dataset (~1.6 GB) is not included in this repository due to GitHub file size limits.
-Users must download it separately from (https://feederwatch.org/explore/raw-dataset-requests/) and place it in the data/ directory before running the scripts. The user can not download more than more subset of data from the website. If you wish to look at the entire dataset (1988-2024) please download raw data and concatenate before running script. 
+Users must download it separately from (https://feederwatch.org/explore/raw-dataset-requests/) and place it in a folder labeled 'data' before running the scripts. The user can not download more than more subset of data from the website. If you wish to look at the entire dataset (1988-2024) please download raw data and concatenate before running script. 
 
+File path: Nectar/data/raw_feederwatch_data
 
 > **Data source:**   
 > Colorado Climate Center Station Data provided by Colorado State University
@@ -39,12 +40,16 @@ pip install -e .
 run-nectar    # generates outputs/flowering_vs_arrival.png and data/mismatch.png & csv files
 ```
 
-## Files
+## Files inside nectar main project root folder
+- `__init__.py` - init file
+- `config.py` - configuration script to ensure no hardcoded filepaths
+- `run.py` - driver script; runs all functions
+
+## Files inside functions folder
 
 - `cleaning.py` — read and clean raw Feederwatch data 
 - `mismatch_analysis.py` — main functions
 - `plotting.py` — plots temporal mismatch, flowering day of year, and hummingbird arrival day of year
-- `run.py` — Driver script
 
 ## License
 
