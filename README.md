@@ -12,13 +12,21 @@ Additionally, please download raw weather station data from (https://climate.col
 
 File path: Nectar/data/station/raw_weather_station_data
 
+
+```text
 nectar/
+├── nectar/
+│   ├── functions/
+│   ├── config.py
+│   └── run.py
 │
-├── nectar/              # package code
 ├── data/
 │   ├── raw_feederwatch_data/
-│   └── station/
+│   └── stations/
+│
 ├── outputs/
+└── pyproject.toml
+```
 
 > **Data source:**   
 > Colorado Climate Center Station Data provided by Colorado State University
