@@ -26,7 +26,7 @@ nectar/
 │
 ├── data/
 │   ├── raw_feederwatch_data/
-│   └── stations/
+│   └── station/
 │
 ├── outputs/
 └── pyproject.toml
