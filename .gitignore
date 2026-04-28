@@ -29,13 +29,18 @@ data/raw/
 nectar/data/feederwatch_2021-2024_raw.csv
 
 # =========================
-# STATION DATA (TRACKED)
+# STATION DATA 
 # =========================
 # (intentionally included in repo)
 # data/stations/*.csv will be tracked
 
+#=================================
+#PYPI
+#===============================
+.pypirc
+
 # =========================
-# OUTPUTS (TRACKED)
+# OUTPUTS 
 # =========================
 # outputs/ is intentionally tracked for results
 
