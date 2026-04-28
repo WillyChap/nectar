@@ -8,7 +8,14 @@ BASE_DIR = Path(__file__).resolve().parent
 # ................................
 # DATA
 # ................................
-FEEDERWATCH_RAW = BASE_DIR / "data" / "feederwatch_2021-2024_raw.csv"
+feederwatch_files = sorted((BASE_DIR / "data").glob("feederwatch_*_raw.csv"))
+
+if not feederwatch_files:
+    raise FileNotFoundError("No feederwatch_*_raw.csv file found in data/")
+
+FEEDERWATCH_RAW = feederwatch_files[-1]
+print("Using feederwatch file:", FEEDERWATCH_RAW)
+
 STATION_DIR = BASE_DIR / "data" / "station"
 
 # ................................
