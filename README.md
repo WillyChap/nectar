@@ -2,7 +2,7 @@
 
 A lightweight python package that analyzes weather station temperature data from Colorado Climate Center (https://climate.colostate.edu/data_access_new.html) and data from Project Feederwatch (https://feederwatch.org/) to compare estimated flowering day of year using growing degree days (GDD) and estimated hummingbird arrival day of year for four species of migratory hummingbirds in the Front Range of Colorado.
 
-# DATA - IMPORTANT CONFIGURATION
+# Data - IMPORTANT CONFIGURATION
 
 The raw FeederWatch dataset (~1.6 GB) is not included in this repository due to GitHub file size limits.
 Users must download it separately from (https://feederwatch.org/explore/raw-dataset-requests/) and place it in a new folder named 'data' before running the scripts. The user can not download more than one subset of data from the website. If you wish to look at the entire dataset (1988-2024) please download raw data and concatenate before running script. 
@@ -70,7 +70,7 @@ python -m pip install -e .
 cd nectar
 ```
 
-## Command Line - this does not work yet
+## Command Line 
 
 ```bash
 run-nectar    # generates outputs/flowering_vs_arrival.png and data/mismatch.png & csv files
